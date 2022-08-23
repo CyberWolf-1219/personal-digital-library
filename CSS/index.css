@@ -1,0 +1,161 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: unset;
+}
+
+html {
+  background-color: rgb(2, 192, 87);
+  height: 100%;
+}
+
+body {
+  height: 100%;
+}
+
+.icon {
+  width: 30px;
+  height: 30px;
+  color: white;
+}
+
+#header {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 50px;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 12pt;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.8);
+  width: 100%;
+  padding: 0px 10px 0px 10px;
+  z-index: 5;
+}
+
+#header span {
+  width: 30%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#header span#drop-down-btn {
+  margin-top: 50px;
+  cursor: pointer;
+}
+
+#reader {
+  z-index: 1;
+  position: relative;
+  top: 60px;
+  margin: 0 auto;
+  display: flex;
+  width: 98%;
+  height: 1130px;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+#reader span#page-viewer {
+  width: 100%;
+  height: 100%;
+  background-color: rgb(0, 18, 68);
+  z-index: 2;
+}
+
+#reader span#prev-btn,
+span#next-btn {
+  height: 100%;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  position: absolute;
+}
+
+#reader span#prev-btn {
+  left: 0px;
+  opacity: 0;
+}
+
+#reader span#next-btn {
+  right: 0px;
+  opacity: 0;
+}
+
+#prev-btn:hover {
+  animation-name: bgcolor;
+  animation-duration: 1s;
+}
+
+#next-btn:hover {
+  animation-name: bgcolor;
+  animation-duration: 1s;
+}
+
+@keyframes bgcolor {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 100;
+  }
+}
+
+.drop-down {
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.4);
+  width: 100%;
+  height: 1150px;
+  z-index: 4;
+  backdrop-filter: blur(5px);
+  top: -150%;
+  transition: 0.5s;
+  overflow: hidden;
+}
+
+.drop-down.visible {
+  top: 50px;
+}
+
+.drop-down #drag-n-drop {
+  display: block;
+  background-color: rgba(255, 255, 255, 0.1);
+  position: relative;
+  width: 100%;
+  height: 25%;
+  border-bottom: 2px rgba(0, 0, 0, 0.8) solid;
+}
+
+.drop-down #drag-n-drop img {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  padding: 30px;
+  opacity: 0.6;
+  border: 3px dashed rgba(255, 255, 255, 0.4);
+  cursor: pointer;
+}
+
+.drop-down #library {
+  position: relative;
+  width: 95%;
+  height: 70%;
+  margin: 20px auto;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: minmax(250px, max-content);
+  gap: 10px;
+  overflow: scroll;
+  transition: 0.5s;
+}
+
+.drop-down #library .item {
+  position: relative;
+  background-color: rgba(0, 0, 0, 0.3);
+  width: 100%;
+  height: 250px;
+  cursor: pointer;
+}

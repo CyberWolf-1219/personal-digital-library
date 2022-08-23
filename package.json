@@ -1,0 +1,22 @@
+{
+  "name": "personal-digital-library",
+  "version": "1.0.0",
+  "description": "Application for storing and reading pdfs and epub files.",
+  "main": "app.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "personal-digital-library"
+  },
+  "keywords": [
+    "electron",
+    "file_handler"
+  ],
+  "author": "BlackMonkey-1219",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^20.0.3"
+  }
+}
