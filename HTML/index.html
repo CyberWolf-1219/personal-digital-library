@@ -4,6 +4,9 @@
     <head>
         <link rel="stylesheet" href="./../CSS/index.css">
         <script src="./../JS/index.js" defer> </script>
+        <script src="./../pdfjs/build/pdf.js" defer></script>
+        <script src="./../JS/drop-down-pannel.js" defer></script>
+        <script src="./../JS/pdf-viewer.js" defer></script>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,21 +18,24 @@
             <span id="file-name-display">File: Electron In Action</span>
             <span id="drop-down-btn"><img src="./../ASSETS/icons/chevrons-down.svg" alt="" srcset=""
                     class="icon"></span>
-            <span id="page-counter">20/100</span>
+            <span id="page-counter">
+                <input type="number" name="current-page-number-display" id="current-page-number-display"> /
+                <span id="total-page-count-display">000</span>
+            </span>
         </div>
 
         <div class="drop-down">
             <div id="drag-n-drop">
                 <img src="./../ASSETS/icons/book-loader.gif" alt="" srcset="">
             </div>
-            <div id="library">
+            <div class="library">
 
             </div>
         </div>
 
         <div id="reader">
             <span id="prev-btn"><img src="./../ASSETS/icons/chevron-left.svg" alt="" srcset="" class="icon"></span>
-            <span id="page-viewer"></span>
+            <div id="canvas-wrapper"><canvas id="page-viewer"></canvas></div>
             <span id="next-btn"><img src="./../ASSETS/icons/chevron-right.svg" alt="" srcset="" class="icon"></span>
         </div>
     </body>

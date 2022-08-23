@@ -18,5 +18,8 @@
   "license": "MIT",
   "devDependencies": {
     "electron": "^20.0.3"
+  },
+  "dependencies": {
+    "pdfjs": "^2.4.7"
   }
 }

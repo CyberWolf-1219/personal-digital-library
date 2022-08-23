@@ -35,7 +35,9 @@ body {
   z-index: 5;
 }
 
-#header span {
+#header span#file-name-display,
+span#drop-down-btn,
+span#page-counter {
   width: 30%;
   display: flex;
   align-items: center;
@@ -45,6 +47,17 @@ body {
 #header span#drop-down-btn {
   margin-top: 50px;
   cursor: pointer;
+}
+
+#header span#page-counter input {
+  width: 30px;
+  margin: 0px 10px;
+}
+
+#header span#page-counter span {
+  width: 30px;
+  margin: 0px 10px;
+  line-height: 30px;
 }
 
 #reader {
@@ -58,11 +71,16 @@ body {
   background-color: rgba(0, 0, 0, 0.8);
 }
 
-#reader span#page-viewer {
+#reader #canvas-wrapper {
   width: 100%;
   height: 100%;
   background-color: rgb(0, 18, 68);
   z-index: 2;
+  overflow: scroll;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  align-items: stretch;
 }
 
 #reader span#prev-btn,
@@ -105,7 +123,7 @@ span#next-btn {
 
 .drop-down {
   position: absolute;
-  background-color: rgba(255, 255, 255, 0.4);
+  background-color: rgba(0, 0, 0, 0.4);
   width: 100%;
   height: 1150px;
   z-index: 4;
@@ -139,7 +157,7 @@ span#next-btn {
   cursor: pointer;
 }
 
-.drop-down #library {
+.drop-down .library {
   position: relative;
   width: 95%;
   height: 70%;
@@ -150,6 +168,19 @@ span#next-btn {
   gap: 10px;
   overflow: scroll;
   transition: 0.5s;
+}
+
+.drop-down .library {
+  position: relative;
+  width: 95%;
+  height: 70%;
+  margin: 20px auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  font-weight: 900;
+  color: white;
 }
 
 .drop-down #library .item {

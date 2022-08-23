@@ -21,15 +21,14 @@ const CreateMainWindow = () => {
 const scanForFiles = () => {
   fs.readdir("./", (error, fileNames) => {
     if (!fileNames.includes("PDFs")) {
-      fs.mkdir("./PDFs", () => {
-        dialog.showMessageBox({ detail: `Can't Create the Folder: ${err}` });
-      });
+      fs.mkdir("./PDFs");
     } else {
       fs.readdir("./PDFs", (err, files) => {
         if (err) {
           dialog.showMessageBox({ detail: err });
         }
         if (files) {
+          console.log(files);
           return files;
         } else {
           return [];
