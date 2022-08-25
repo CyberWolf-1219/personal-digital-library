@@ -19,6 +19,18 @@ refreshBtn.addEventListener("click", () => {
   createItem();
 });
 
+// Drag n Drop Function ======================================================
+dropArea.addEventListener("dragover", (event) => {
+  event.stopPropagation();
+  event.preventDefault();
+});
+
+dropArea.addEventListener("drop", (event) => {
+  event.stopPropagation();
+  event.preventDefault();
+  console.log(event);
+});
+
 // Clean the Library ==================================================
 function cleanLibrary() {
   while (library.lastChild) {
