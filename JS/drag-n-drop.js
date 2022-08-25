@@ -1,4 +1,3 @@
-const fileReader = new FileReader();
 // Drag n Drop Function ======================================================
 dropArea.addEventListener("dragover", (event) => {
   event.stopPropagation();

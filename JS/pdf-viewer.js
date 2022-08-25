@@ -11,8 +11,8 @@ let currentPageDisplay = document.getElementById("current-page-number-display");
 var pdfDoc = null;
 let currentPageNumber = 1;
 let totalPages = null;
-let pageScale = 1;
-let transform = [pageScale, 0, 0, pageScale, 0, 0];
+let pageScale = 2;
+let transform = [1, 0, 0, 1, 0, 0];
 
 let isPageRendering = false;
 let pendingPage = null;
@@ -40,17 +40,56 @@ prevBtn.addEventListener("click", () => {
 });
 
 //=============================================================================
+// ZOOM Functions
+//=============================================================================
+const zoomInBtn = document.getElementById("zoom-in");
+const zoomOutBtn = document.getElementById("zoom-out");
+const zoomDisplay = document.getElementById("zoom-display");
+
+let renderScale = () => {
+  zoomDisplay.textContent = pageScale;
+};
+
+zoomInBtn.addEventListener("click", () => {
+  if (pageScale >= 3.0) {
+    return;
+  }
+  pageScale += 0.25;
+  renderScale();
+  renderManager(currentPageNumber);
+});
+
+zoomOutBtn.addEventListener("click", () => {
+  if (pageScale <= 0.25) {
+    return;
+  }
+  pageScale -= 0.25;
+  renderScale();
+  renderManager(currentPageNumber);
+});
+
+//=============================================================================
 // Rendering Functions
 //=============================================================================
 
 // Load the PDF file===========================================================
 let renderPDFFile = () => {
-  pdfjsLib.getDocument("./../PDFs/" + pdfDoc).promise.then((pdf) => {
-    pdfDoc = pdf;
-    totalPageCountDisplay.innerText = pdfDoc.numPages;
-    totalPages = pdfDoc.numPages;
-    renderPage(1);
-  });
+  renderScale();
+  if (typeof pdfDoc == "string") {
+    pdfjsLib.getDocument("./../PDFs/" + pdfDoc).promise.then((pdf) => {
+      pdfDoc = pdf;
+      totalPageCountDisplay.innerText = pdfDoc.numPages;
+      totalPages = pdfDoc.numPages;
+      renderPage(currentPageNumber);
+    });
+  } else {
+    pdfjsLib.getDocument(pdfDoc).promise.then((pdf) => {
+      pdfDoc = pdf;
+      totalPageCountDisplay.innerText = pdfDoc.numPages;
+      totalPages = pdfDoc.numPages;
+      renderPage(currentPageNumber);
+    });
+  }
 };
 
 // Render Function  ===========================================================

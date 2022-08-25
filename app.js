@@ -15,7 +15,7 @@ const CreateMainWindow = () => {
   });
   window.loadFile("./HTML/index.html");
   window.removeMenu();
-  //window.webContents.openDevTools();
+  window.webContents.openDevTools();
 };
 
 let scanForFiles = (event) => {

@@ -28,7 +28,6 @@ dropArea.addEventListener("dragover", (event) => {
 dropArea.addEventListener("drop", (event) => {
   event.stopPropagation();
   event.preventDefault();
-  console.log(event);
 });
 
 // Clean the Library ==================================================

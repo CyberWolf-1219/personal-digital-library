@@ -2,32 +2,33 @@
 <html lang="en">
 
     <head>
-        <link rel="stylesheet" href="./../CSS/index.css">
-        <script src="./../JS/index.js" defer> </script>
+        <link rel="stylesheet" href="./../CSS/index.css" />
+        <script src="./../JS/index.js" defer></script>
         <script src="./../pdfjs/build/pdf.js" defer></script>
         <script src="./../JS/drop-down-pannel.js" defer></script>
         <script src="./../JS/drag-n-drop.js" defer></script>
         <script src="./../JS/pdf-viewer.js" defer></script>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>PDL</title>
     </head>
 
     <body>
         <div id="header">
-            <span id="file-name-display">
-            </span>
-            <span id="drop-down-btn"><img src="./../ASSETS/icons/chevron-down.svg" alt="" srcset="" class="icon"></span>
+            <span id="file-name-display"> </span>
+            <span id="drop-down-btn"><img src="./../ASSETS/icons/chevron-down.svg" alt="" srcset=""
+                    class="icon" /></span>
             <span id="page-counter">
-                <input type="number" name="current-page-number-display" id="current-page-number-display"> /
+                <input type="number" name="current-page-number-display" id="current-page-number-display" />
+                /
                 <span id="total-page-count-display">000</span>
             </span>
         </div>
 
         <div class="drop-down">
             <div id="drag-n-drop">
-                <img src="./../ASSETS/icons/book-loader.gif" alt="" srcset="">
+                <img src="./../ASSETS/icons/book-loader.gif" alt="" srcset="" />
             </div>
             <div id="library-wrapper">
                 <div id="task-bar">
@@ -36,7 +37,7 @@
                         <option value="Status">Status</option>
                     </select>
                     <button id="refresh-btn">
-                        <img src="./../assets/icons/refresh.svg" class='icon' alt="" srcset="">
+                        <img src="./../assets/icons/refresh.svg" class="icon" alt="" srcset="" />
                     </button>
                 </div>
                 <div class="library no-item">
@@ -51,15 +52,20 @@
                     <div id="1" class="item"></div>
                     <div id="1" class="item"></div>
                     <div id="1" class="item"></div>
-                    <div id="1" class="item"> </div>
+                    <div id="1" class="item"></div>
                 </div>
             </div>
         </div>
 
         <div id="reader">
-            <span id="prev-btn"><img src="./../ASSETS/icons/chevron-left.svg" alt="" srcset="" class="icon"></span>
+            <span id="prev-btn"><img src="./../ASSETS/icons/chevron-left.svg" alt="" srcset="" class="icon" /></span>
             <div id="canvas-wrapper"><canvas id="page-viewer"></canvas></div>
-            <span id="next-btn"><img src="./../ASSETS/icons/chevron-right.svg" alt="" srcset="" class="icon"></span>
+            <span id="next-btn"><img src="./../ASSETS/icons/chevron-right.svg" alt="" srcset="" class="icon" /></span>
+        </div>
+        <div id="magnifier">
+            <span id="zoom-out">➖</span>
+            <span id="zoom-display"></span>
+            <span id="zoom-in">➕</span>
         </div>
     </body>
 
