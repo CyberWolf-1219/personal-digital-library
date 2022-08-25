@@ -5,11 +5,11 @@ const fileNameDisplay = document.getElementById("file-name-display");
 let pdfs = [];
 
 // Scan For Files On Start ====================================================
-// window.addEventListener("DOMContentLoaded", () => {
-//   cleanLibrary();
-//   refreshLib();
-//   createItem();
-// });
+window.addEventListener("DOMContentLoaded", () => {
+  cleanLibrary();
+  refreshLib();
+  createItem();
+});
 
 // Scan on Refresh Button Click ====================================================
 const refreshBtn = document.getElementById("refresh-btn");

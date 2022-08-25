@@ -38,7 +38,7 @@ body {
 #header span#file-name-display,
 span#drop-down-btn,
 span#page-counter {
-  max-width: 150px;
+  width: 150px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -183,7 +183,12 @@ span#next-btn {
 .drop-down #library-wrapper #task-bar #refresh-btn {
   width: 30px;
   height: 30px;
-  font-size: 22px;
+  background-color: unset;
+}
+
+.drop-down #library-wrapper #task-bar #refresh-btn img {
+  width: 30px;
+  height: 30px;
 }
 
 .drop-down .library.no-item {
