@@ -5,18 +5,21 @@
   border: unset;
 }
 
+html::-webkit-scrollbar {
+  display: none;
+}
+
 html {
-  background-color: rgb(2, 192, 87);
-  height: 100%;
+  overflow: hidden;
 }
 
 body {
-  height: 100%;
+  height: 100vh;
 }
 
 .icon {
-  width: 50px;
-  height: 50px;
+  width: 25px;
+  height: 25px;
   color: white;
 }
 
@@ -33,17 +36,32 @@ body {
   width: 100%;
   padding: 0px 10px 0px 10px;
   z-index: 5;
+  opacity: 0;
+  transition: 1s ease-in-out;
+}
+
+#header:hover {
+  opacity: 100;
 }
 
 #header span#file-name-display,
 span#drop-down-btn,
 span#page-counter {
-  width: 150px;
+  width: 250px;
   display: flex;
   align-items: center;
   justify-content: center;
   white-space: nowrap;
   text-overflow: ellipsis;
+}
+
+#header span#file-name-display {
+  height: 30px;
+  text-overflow: ellipsis;
+  text-align: left;
+  display: block;
+  line-height: 30px;
+  padding: 5px;
   overflow: hidden;
 }
 
@@ -66,24 +84,29 @@ span#page-counter {
 #reader {
   z-index: 1;
   position: relative;
-  top: 60px;
-  margin: 0 auto;
+  padding: 5px;
+
   display: flex;
-  width: 98%;
-  height: 1130px;
-  background-color: rgba(0, 0, 0, 0.8);
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 1);
 }
 
 #reader #canvas-wrapper {
-  width: 100%;
-  height: 100%;
-  background-color: rgb(255, 255, 255);
   z-index: 2;
-  overflow: hidden;
+  width: 98%;
+  height: 98%;
+  margin: auto;
+  background-color: rgb(255, 255, 255);
+  overflow: scroll;
   display: flex;
   align-content: center;
   justify-content: center;
   align-items: stretch;
+}
+
+#reader #canvas-wrapper::-webkit-scrollbar {
+  display: none;
 }
 
 #reader span#prev-btn,
@@ -121,7 +144,7 @@ span#next-btn {
   position: absolute;
   background-color: rgba(0, 0, 0, 0.6);
   width: 100%;
-  height: 1150px;
+  height: 100%;
   z-index: 4;
   backdrop-filter: blur(5px);
   top: -150%;
@@ -130,12 +153,11 @@ span#next-btn {
 }
 
 .drop-down.visible {
-  top: 50px;
+  top: 0;
 }
 
 .drop-down #drag-n-drop {
   display: block;
-  background-color: rgba(255, 255, 255, 0.5);
   position: relative;
   width: 100%;
   height: 25%;
@@ -149,8 +171,9 @@ span#next-btn {
   transform: translateX(-50%) translateY(-50%);
   padding: 30px;
   opacity: 0.6;
-  border: 3px dashed rgba(255, 255, 255, 0.4);
+  border: 3px dashed rgba(0, 0, 0, 0.7);
   cursor: pointer;
+  background-color: rgba(255, 255, 255, 0.7);
 }
 
 .drop-down #library-wrapper {
@@ -166,7 +189,7 @@ span#next-btn {
   flex-direction: row;
   width: 100%;
   height: 50px;
-  padding: 10px 10px;
+  padding: 10px 50px;
   justify-content: space-between;
   align-items: center;
   border-bottom: 2px solid black;
@@ -193,12 +216,13 @@ span#next-btn {
 
 .drop-down .library.no-item {
   position: relative;
-  width: 95%;
+  width: 100%;
   height: 100%;
   margin: 20px auto;
   display: flex;
   align-items: center;
   justify-content: center;
+  text-align: center;
   font-size: 22px;
   font-weight: 900;
   color: white;
@@ -206,13 +230,15 @@ span#next-btn {
 
 .drop-down .library.items {
   position: relative;
-  width: 95%;
-  height: 100%;
+  width: 98%;
+  height: 98%;
   margin: 10px auto;
+  padding: 10px;
   display: grid;
-  grid-template-columns: repeat(5, 150px);
+  grid-template-columns: repeat(4, 1fr);
   grid-auto-rows: 250px;
   gap: 10px;
+  justify-items: center;
   overflow: scroll;
   transition: 0.5s;
 }
@@ -223,6 +249,7 @@ span#next-btn {
   width: 150px;
   height: 250px;
   cursor: pointer;
+  border: 3px black solid;
 }
 
 .drop-down .library .item canvas {

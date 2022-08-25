@@ -6,7 +6,7 @@ let pdfs = [];
 
 // Scan For Files On Start ====================================================
 window.addEventListener("DOMContentLoaded", () => {
-  cleanLibrary();
+  //cleanLibrary();
   refreshLib();
   createItem();
 });

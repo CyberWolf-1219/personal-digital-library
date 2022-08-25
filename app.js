@@ -6,17 +6,16 @@ var window = null;
 
 const CreateMainWindow = () => {
   window = new BrowserWindow({
-    width: 1600,
-    height: 1000,
+    width: 800,
+    height: 900,
     transparent: true,
     webPreferences: {
       preload: path.join(__dirname, "/preload.js"),
     },
   });
-
   window.loadFile("./HTML/index.html");
   window.removeMenu();
-  window.webContents.openDevTools();
+  //window.webContents.openDevTools();
 };
 
 let scanForFiles = (event) => {
