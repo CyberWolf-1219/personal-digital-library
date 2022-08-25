@@ -11,8 +11,8 @@ let currentPageDisplay = document.getElementById("current-page-number-display");
 var pdfDoc = null;
 let currentPageNumber = 1;
 let totalPages = null;
-let pageScale = 1.25;
-let transform = [1, 0, 0];
+let pageScale = 1;
+let transform = [pageScale, 0, 0, pageScale, 0, 0];
 
 let isPageRendering = false;
 let pendingPage = null;
@@ -44,12 +44,14 @@ prevBtn.addEventListener("click", () => {
 //=============================================================================
 
 // Load the PDF file===========================================================
-pdfjsLib.getDocument("./../test.pdf").promise.then((pdf) => {
-  pdfDoc = pdf;
-  totalPageCountDisplay.innerText = pdfDoc.numPages;
-  totalPages = pdfDoc.numPages;
-  renderPage(1);
-});
+let renderPDFFile = () => {
+  pdfjsLib.getDocument("./../PDFs/" + pdfDoc).promise.then((pdf) => {
+    pdfDoc = pdf;
+    totalPageCountDisplay.innerText = pdfDoc.numPages;
+    totalPages = pdfDoc.numPages;
+    renderPage(1);
+  });
+};
 
 // Render Function  ===========================================================
 let renderPage = (pageNumber) => {
@@ -79,6 +81,7 @@ let renderPage = (pageNumber) => {
     pendingPage = null;
   }
 };
+
 // Render Manager Function ========================================================
 let renderManager = (pageNumbertoRender) => {
   if (isPageRendering) {

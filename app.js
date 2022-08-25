@@ -21,7 +21,13 @@ const CreateMainWindow = () => {
 
 let scanForFiles = (event) => {
   fs.readdir("./PDFs", (err, files) => {
-    event.reply("scanResults", files);
+    if (err) {
+      fs.mkdir("./PDFs", (err) => {
+        dialog.showErrorBox("Directory Creation Error", err);
+      });
+    } else {
+      event.reply("scanResults", files);
+    }
   });
 };
 

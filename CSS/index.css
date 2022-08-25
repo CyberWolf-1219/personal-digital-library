@@ -15,8 +15,8 @@ body {
 }
 
 .icon {
-  width: 30px;
-  height: 30px;
+  width: 50px;
+  height: 50px;
   color: white;
 }
 
@@ -38,14 +38,17 @@ body {
 #header span#file-name-display,
 span#drop-down-btn,
 span#page-counter {
-  width: 30%;
+  max-width: 150px;
   display: flex;
   align-items: center;
   justify-content: center;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
 #header span#drop-down-btn {
-  margin-top: 50px;
+  margin-top: 30px;
   cursor: pointer;
 }
 
@@ -76,7 +79,7 @@ span#page-counter {
   height: 100%;
   background-color: rgb(255, 255, 255);
   z-index: 2;
-  overflow: scroll;
+  overflow: hidden;
   display: flex;
   align-content: center;
   justify-content: center;
@@ -90,6 +93,10 @@ span#next-btn {
   display: flex;
   align-items: center;
   position: absolute;
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 150px;
+  justify-content: center;
+  transition: 1s ease-in-out;
 }
 
 #reader span#prev-btn {
@@ -102,23 +109,12 @@ span#next-btn {
   opacity: 0;
 }
 
-#prev-btn:hover {
-  animation-name: bgcolor;
-  animation-duration: 1s;
+#reader span#prev-btn:hover {
+  opacity: 100;
 }
 
-#next-btn:hover {
-  animation-name: bgcolor;
-  animation-duration: 1s;
-}
-
-@keyframes bgcolor {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 100;
-  }
+#reader span#next-btn:hover {
+  opacity: 100;
 }
 
 .drop-down {

@@ -1,14 +1,15 @@
 const pdfsjsLib = window["pdfjs-dist/build/pdf"];
 const library = document.getElementsByClassName("library")[0];
 const dropArea = document.getElementById("drag-n-drop");
+const fileNameDisplay = document.getElementById("file-name-display");
 let pdfs = [];
 
 // Scan For Files On Start ====================================================
-window.addEventListener("DOMContentLoaded", () => {
-  cleanLibrary();
-  refreshLib();
-  createItem();
-});
+// window.addEventListener("DOMContentLoaded", () => {
+//   cleanLibrary();
+//   refreshLib();
+//   createItem();
+// });
 
 // Scan on Refresh Button Click ====================================================
 const refreshBtn = document.getElementById("refresh-btn");
@@ -86,7 +87,11 @@ function createItem() {
     item.id = i;
     item.classList.add("item");
     item.addEventListener("click", () => {
-      alert(item.id);
+      pdfName = item.children[0].getAttribute("name");
+      pdfDoc = pdfName;
+      fileNameDisplay.textContent = "File: " + pdfName;
+
+      renderPDFFile();
     });
     library.append(item);
 
