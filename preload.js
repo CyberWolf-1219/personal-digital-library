@@ -1,5 +1,10 @@
 const { contextBridge, ipcRenderer } = require("electron");
 
 contextBridge.exposeInMainWorld("electronAPI", {
-  getFiles: () => ipcRenderer.invoke("scanFiles"),
+  scanForFiles: () => {
+    ipcRenderer.send("scanForFiles");
+  },
+  getScanResults: (callback) => {
+    ipcRenderer.on("scanResults", callback);
+  },
 });

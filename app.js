@@ -1,12 +1,13 @@
 const { app, BrowserWindow, ipcMain, dialog } = require("electron");
 const path = require("path");
 const fs = require("fs");
-const { pbkdf2Sync } = require("crypto");
+
+var window = null;
 
 const CreateMainWindow = () => {
-  const window = new BrowserWindow({
-    width: 800,
-    height: 1200,
+  window = new BrowserWindow({
+    width: 1600,
+    height: 1000,
     transparent: true,
     webPreferences: {
       preload: path.join(__dirname, "/preload.js"),
@@ -18,27 +19,15 @@ const CreateMainWindow = () => {
   window.webContents.openDevTools();
 };
 
-const scanForFiles = () => {
-  fs.readdir("./", (error, fileNames) => {
-    if (!fileNames.includes("PDFs")) {
-      fs.mkdir("./PDFs");
-    } else {
-      fs.readdir("./PDFs", (err, files) => {
-        if (err) {
-          dialog.showMessageBox({ detail: err });
-        }
-        if (files) {
-          console.log(files);
-          return files;
-        } else {
-          return [];
-        }
-      });
-    }
+let scanForFiles = (event) => {
+  fs.readdir("./PDFs", (err, files) => {
+    event.reply("scanResults", files);
   });
 };
 
-app.on("ready", () => {
+app.whenReady().then(() => {
   CreateMainWindow();
-  ipcMain.handle("scanFiles", scanForFiles);
+  ipcMain.on("scanForFiles", (event, data) => {
+    scanForFiles(event);
+  });
 });

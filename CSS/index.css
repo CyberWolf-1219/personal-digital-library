@@ -74,7 +74,7 @@ span#page-counter {
 #reader #canvas-wrapper {
   width: 100%;
   height: 100%;
-  background-color: rgb(0, 18, 68);
+  background-color: rgb(255, 255, 255);
   z-index: 2;
   overflow: scroll;
   display: flex;
@@ -123,7 +123,7 @@ span#next-btn {
 
 .drop-down {
   position: absolute;
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: rgba(0, 0, 0, 0.6);
   width: 100%;
   height: 1150px;
   z-index: 4;
@@ -139,7 +139,7 @@ span#next-btn {
 
 .drop-down #drag-n-drop {
   display: block;
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(255, 255, 255, 0.5);
   position: relative;
   width: 100%;
   height: 25%;
@@ -157,23 +157,43 @@ span#next-btn {
   cursor: pointer;
 }
 
-.drop-down .library {
+.drop-down #library-wrapper {
   position: relative;
-  width: 95%;
-  height: 70%;
-  margin: 20px auto;
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  grid-template-rows: minmax(250px, max-content);
-  gap: 10px;
-  overflow: scroll;
-  transition: 0.5s;
+  display: block;
+  width: 100%;
+  height: 75%;
 }
 
-.drop-down .library {
+.drop-down #library-wrapper #task-bar {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 50px;
+  padding: 10px 10px;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid black;
+}
+
+.drop-down #library-wrapper #task-bar #filter {
+  width: 150px;
+  font-size: 12pt;
+  background-color: unset;
+  outline: none;
+  line-height: 20px;
+}
+
+.drop-down #library-wrapper #task-bar #refresh-btn {
+  width: 30px;
+  height: 30px;
+  font-size: 22px;
+}
+
+.drop-down .library.no-item {
   position: relative;
   width: 95%;
-  height: 70%;
+  height: 100%;
   margin: 20px auto;
   display: flex;
   align-items: center;
@@ -183,10 +203,28 @@ span#next-btn {
   color: white;
 }
 
-.drop-down #library .item {
+.drop-down .library.items {
+  position: relative;
+  width: 95%;
+  height: 100%;
+  margin: 10px auto;
+  display: grid;
+  grid-template-columns: repeat(5, 150px);
+  grid-auto-rows: 250px;
+  gap: 10px;
+  overflow: scroll;
+  transition: 0.5s;
+}
+
+.drop-down .library .item {
   position: relative;
   background-color: rgba(0, 0, 0, 0.3);
-  width: 100%;
+  width: 150px;
   height: 250px;
   cursor: pointer;
+}
+
+.drop-down .library .item canvas {
+  width: 100%;
+  height: 100%;
 }

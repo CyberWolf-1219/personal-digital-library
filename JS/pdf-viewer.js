@@ -1,7 +1,7 @@
 //=============================================================================
 // Global variables
 //=============================================================================
-const pdfjsLib = window["pdfjsLib"];
+const pdfjsLib = window["pdfjs-dist/build/pdf"];
 let canvas = document.getElementById("page-viewer");
 let canvasCntxt = canvas.getContext("2d");
 
@@ -12,7 +12,7 @@ var pdfDoc = null;
 let currentPageNumber = 1;
 let totalPages = null;
 let pageScale = 1.25;
-let transform = [1, 0, 0, 1, 0, 0];
+let transform = [1, 0, 0];
 
 let isPageRendering = false;
 let pendingPage = null;
