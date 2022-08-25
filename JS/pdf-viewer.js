@@ -45,12 +45,21 @@ prevBtn.addEventListener("click", () => {
 
 // Load the PDF file===========================================================
 let renderPDFFile = () => {
-  pdfjsLib.getDocument("./../PDFs/" + pdfDoc).promise.then((pdf) => {
-    pdfDoc = pdf;
-    totalPageCountDisplay.innerText = pdfDoc.numPages;
-    totalPages = pdfDoc.numPages;
-    renderPage(1);
-  });
+  if (typeof pdfDoc == "string") {
+    pdfjsLib.getDocument("./../PDFs/" + pdfDoc).promise.then((pdf) => {
+      pdfDoc = pdf;
+      totalPageCountDisplay.innerText = pdfDoc.numPages;
+      totalPages = pdfDoc.numPages;
+      renderPage(1);
+    });
+  } else {
+    pdfjsLib.getDocument(pdfDoc).promise.then((pdf) => {
+      pdfDoc = pdf;
+      totalPageCountDisplay.innerText = pdfDoc.numPages;
+      totalPages = pdfDoc.numPages;
+      renderPage(1);
+    });
+  }
 };
 
 // Render Function  ===========================================================
