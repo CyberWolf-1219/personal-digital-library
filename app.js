@@ -15,15 +15,13 @@ const CreateMainWindow = () => {
   });
   window.loadFile("./HTML/index.html");
   window.removeMenu();
-  window.webContents.openDevTools();
+  //window.webContents.openDevTools();
 };
 
 let scanForFiles = (event) => {
   fs.readdir("./PDFs", (err, files) => {
     if (err) {
-      fs.mkdir("./PDFs", (err) => {
-        dialog.showErrorBox("Directory Creation Error", err);
-      });
+      fs.mkdir("./PDFs", () => {});
     } else {
       event.reply("scanResults", files);
     }
